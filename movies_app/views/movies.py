@@ -21,13 +21,13 @@ class MoviesViewSet(MultipleFieldPKModelMixin, CreateRetrieveUpdateViewSet, ApiR
     def get_object(self, pk):
         try:
             return Movies.objects.filter(pk=pk).exclude(status='deleted')[0]
-        except:
+        except Exception as e:
             return None
 
-    def retrieve(self, request, category_id=None, **kwargs):
+    def retrieve(self, request, movie_id=None, **kwargs):
         try:
             # capture data
-            instance = self.get_object(category_id)
+            instance = self.get_object(movie_id)
             if instance is None:
                 return ApiResponse.response_not_found(self, message=self.singular_name + ' not found')
 
@@ -76,7 +76,7 @@ class MoviesViewSet(MultipleFieldPKModelMixin, CreateRetrieveUpdateViewSet, ApiR
             if not name:
                 return ApiResponse.response_bad_request(self, message='Movie name not found.')
 
-            get_category = Movies.objects.filter(name=name, parent__isnull=True, is_deleted=False)
+            get_category = Movies.objects.filter(name=name, status='active')
             if get_category:
                 return ApiResponse.response_bad_request(self, message='Movie already exists.')
 

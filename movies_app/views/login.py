@@ -41,7 +41,6 @@ class LoginViewSet(GenericAPIView, ApiResponse, EmailOrUsernameModelBackend):
                 if token.status_code == 200:
                     resp_dict = get_login_response(user, token)
                     resp_dict['token'] = token.json()
-                    Users.objects.filter(pk=user.id).update(current_status="online")
                     return ApiResponse.response_ok(self, data=resp_dict, message='Login successful')
                 else:
                     return ApiResponse.response_bad_request(self, message='User Not Authorized')
