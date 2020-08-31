@@ -22,6 +22,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '@hlwk4y8gmkcn@09@8sukwc8ud7k^ds8yi%3@6v!c!nr(#wz!_'
 
+CLIENT_ID = 'hYjpXPIgnqB6I6rxfCosmWRpMZtIlCMNKb5HIA8L'
+CLIENT_SECRET = '6ifWfljIRzrkwbmA4kx1Y34TwXt4Buq8UPIlux5lvvK5tg2IiqXc2TFBlzQ7SlTD8yuVK1bJy9C3lrIemGHIwGihnXWUUvpsKwobzpD6m8Uf15iqa461DrnokIUEbPyh'
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -144,3 +147,5 @@ AUTH_USER_MODEL = "movies_app.User"
 ROOT_URLCONF = 'movies.urls'
 SITE_ID = 1
 HEADERS = "AE698wLwHGPLvtuzF46V4P2h4yh3ru2MmkBKpsEA7bzQSHjQ3F"
+PAGE_SIZE = 10
+SERVER_PROTOCOLS = 'http://'

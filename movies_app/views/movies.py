@@ -58,7 +58,6 @@ class MoviesViewSet(MultipleFieldPKModelMixin, CreateRetrieveUpdateViewSet, ApiR
                 obj_list.append((Q(Q(name__icontains=search_keyword) | Q(director__icontains=search_keyword))))
 
             q_list = [Q(x) for x in obj_list]
-            adv_q_list = [Q(y) for y in ads_list]
 
             queryset = Movies.objects.filter(reduce(operator.and_, q_list)).order_by(sort_by)
             resp_data = get_pagination_resp(queryset, request)
